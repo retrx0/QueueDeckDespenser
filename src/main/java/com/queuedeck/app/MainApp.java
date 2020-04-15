@@ -16,7 +16,7 @@ public class MainApp extends Application {
         
         Scene scene = new Scene(root);
         scene.getStylesheets().add("/styles/Style-Default.css");
-        
+        //
         stage.getIcons().add(new Image(this.getClass().getResource("/img/logo.ico.png").toString()));
         
         stage.setTitle("Queue Deck Dispenser App");
