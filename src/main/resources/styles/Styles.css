@@ -1,0 +1,19 @@
+
+.button {
+    -fx-font-weight: bold;
+    -fx-font-size: 24px;
+    -fx-background-color: #FFF;
+    -fx-text-fill: #253365;
+}
+.button:hover{
+    -fx-font-weight: bold;
+    -fx-font-size: 24px;
+    -fx-background-color: #D0D9FA;
+}
+.button:focus{
+    -fx-font-weight: bold;
+    -fx-font-size: 24px; 
+}
+.button:active{
+    -fx-font-size: 24px;
+}
