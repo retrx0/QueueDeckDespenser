@@ -1,4 +1,4 @@
-package com.qdeck.qdeckdispenserappfx;
+package com.queuedeck.app;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,9 +15,9 @@ public class MainApp extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));
         
         Scene scene = new Scene(root);
-        scene.getStylesheets().add("/styles/Styles.css");
+        scene.getStylesheets().add("/styles/Style-Default.css");
         
-        stage.getIcons().add(new Image(this.getClass().getResource("/fxml/icons/logo.ico.png").toString()));
+        stage.getIcons().add(new Image(this.getClass().getResource("/img/logo.ico.png").toString()));
         
         stage.setTitle("Queue Deck Dispenser App");
         stage.setScene(scene);

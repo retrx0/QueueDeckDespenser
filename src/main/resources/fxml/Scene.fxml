@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="618.0" prefWidth="658.0" style="-fx-background-color: #253365;" stylesheets="@../styles/Styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qdeck.qdeckdispenserappfx.DispenserFXMLController">
+<AnchorPane prefHeight="618.0" prefWidth="658.0" style="-fx-background-color: #253365;" stylesheets="@../styles/Styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.queuedeck.controller.DispenserFXMLController">
    <children>
       <StackPane fx:id="cardsStackPane" prefHeight="615.0" prefWidth="658.0" AnchorPane.bottomAnchor="23.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -51,7 +51,7 @@
                      <children>
                         <ImageView fitHeight="229.0" fitWidth="284.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                            <image>
-                              <Image url="@icons/printingTicketD.png" />
+                              <Image url="@../img/printingTicketD.png" />
                            </image>
                         </ImageView>
                         <Label fx:id="ticketNumberLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="214.0" prefWidth="216.0" text="00" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
@@ -198,7 +198,7 @@
                      <children>
                         <ImageView blendMode="ADD" fitHeight="121.0" fitWidth="365.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                            <image>
-                              <Image url="@icons/cropped-logo_blue-2.resized.png" />
+                              <Image url="@../img/cropped-logo_blue-2.resized.png" />
                            </image>
                         </ImageView>
                      </children>

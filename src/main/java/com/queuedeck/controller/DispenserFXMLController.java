@@ -1,4 +1,4 @@
-package com.qdeck.qdeckdispenserappfx;
+package com.queuedeck.controller;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -30,10 +30,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 import javax.swing.Timer;
-import model.BasicConnectionPool;
-import model.transitions.FadeInLeftTransition;
-import model.transitions.FadeOutRightTransition;
-import model.ticket;
+import com.queuedeck.pool.BasicConnectionPool;
+import com.queuedeck.transitions.FadeInLeftTransition;
+import com.queuedeck.transitions.FadeOutRightTransition;
+import com.queuedeck.model.Ticket;
 
 public class DispenserFXMLController implements Initializable {
 
@@ -43,10 +43,10 @@ public class DispenserFXMLController implements Initializable {
     static String password = "rotflmao0000";
     static int ticketCounter = 1;
     String t1;int  t2;String t3;
-    static Deque<ticket> currentCustomerQueue = new LinkedList<>();
-    static Deque<ticket> newCustomerQueue = new LinkedList<>();
-    static Deque<ticket> serviceQueue = new LinkedList<>();
-    static Deque<ticket> othersQueue = new LinkedList<>();
+    static Deque<Ticket> currentCustomerQueue = new LinkedList<>();
+    static Deque<Ticket> newCustomerQueue = new LinkedList<>();
+    static Deque<Ticket> serviceQueue = new LinkedList<>();
+    static Deque<Ticket> othersQueue = new LinkedList<>();
     BasicConnectionPool pool = BasicConnectionPool.create(url, username, password);
     public String currentCusTag;
     public String newCusTag;
@@ -56,8 +56,8 @@ public class DispenserFXMLController implements Initializable {
     
     //<editor-fold defaultstate="collapsed" desc="Action Methods">
 
-    private void buttonPerformAction(StackPane cardStack, Deque<ticket> queue, Node card, String tag, String service){
-                ticket oTkt = new ticket();
+    private void buttonPerformAction(StackPane cardStack, Deque<Ticket> queue, Node card, String tag, String service){
+                Ticket oTkt = new Ticket();
                 oTkt.setTicketNumber(ticketCounter++);
                 oTkt.setTag(tag);
                 oTkt.getTimeStamp();
