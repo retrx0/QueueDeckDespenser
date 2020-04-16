@@ -38,15 +38,15 @@ import com.queuedeck.model.Ticket;
 public class DispenserFXMLController implements Initializable {
 
     //<editor-fold defaultstate="collapsed" desc="Static Global variables">
-    static String url = "jdbc:mysql://104.155.33.7:3306/ticketing";
-    static String username = "root";
-    static String password = "rotflmao0000";
-    static int ticketCounter = 1;
+    String url = "jdbc:mysql://104.155.33.7:3306/ticketing";
+    String username = "root";
+    String password = "rotflmao0000";
+    int ticketCounter = 1;
     String t1;int  t2;String t3;
-    static Deque<Ticket> currentCustomerQueue = new LinkedList<>();
-    static Deque<Ticket> newCustomerQueue = new LinkedList<>();
-    static Deque<Ticket> serviceQueue = new LinkedList<>();
-    static Deque<Ticket> othersQueue = new LinkedList<>();
+    Deque<Ticket> currentCustomerQueue = new LinkedList<>();
+    Deque<Ticket> newCustomerQueue = new LinkedList<>();
+    Deque<Ticket> serviceQueue = new LinkedList<>();
+    Deque<Ticket> othersQueue = new LinkedList<>();
     BasicConnectionPool pool = BasicConnectionPool.create(url, username, password);
     public String currentCusTag;
     public String newCusTag;
