@@ -89,7 +89,7 @@ public class DispenserFXMLController implements Initializable {
                         ticketNumberLabel.setText(t1+t2);
                         stmt.executeUpdate(cmd);
                         pool.releaseConnection(con);
-                }
+                }//
                 catch(SQLException ex){System.out.println(ex);}
         }    
     void printTicket(){
