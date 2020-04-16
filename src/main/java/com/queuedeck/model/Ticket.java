@@ -14,7 +14,7 @@ import java.util.Queue;
  * @author ABDULRAHMAN ILLO
  */
 public class Ticket {
-    //
+    
     int ticketNo;
     String tag;
     LocalDateTime timeStamp = LocalDateTime.now();
