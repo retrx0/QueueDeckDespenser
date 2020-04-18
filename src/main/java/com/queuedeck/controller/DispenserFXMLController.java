@@ -346,25 +346,73 @@ public class DispenserFXMLController implements Initializable {
                 while(true){
                     Platform.runLater(() -> {
                         try{
-                            PreparedStatement ps = con.prepareStatement("select locked, s_no from services");
+                            PreparedStatement ps = con.prepareStatement("select locked, s_no, unlock_time from services");
                             ResultSet rst =ps.executeQuery();
+                            Statement stmt = con.createStatement();
                             while(rst.next()){
                                 String lck = rst.getString("locked");
                                 String sno = rst.getString("s_no");
-                               if(sno.equals(currentCusTag)){
-                                    if(lck.equals("1")){currentCusBtn.setDisable(true);}else{currentCusBtn.setDisable(false);}
+                                String stime = rst.getString("unlock_time");
+                                String local_time = String.valueOf(LocalTime.now()).substring(0,2) + ":" + String.valueOf(LocalTime.now()).substring(3,5) + ":" + "00" ;
+                                if(sno.equals(currentCusTag)){
+                                    if(lck.equals("1")){
+                                        currentCusBtn.setDisable(true);
+                                        if(stime != null){
+                                            if(stime.equals(local_time)){
+                                                currentCusBtn.setDisable(false);
+                                                stmt.executeUpdate("update services set locked = '0', unlock_time = null where s_no = '"+sno+"'");
+                                            }
+                                        }
+                                    }
+                                    else{
+                                        currentCusBtn.setDisable(false);
+                                    }
                                 }
                                 else if(sno.equals(newCusTag)){
-                                    if(lck.equals("1")){newCusBtn.setDisable(true);}else{newCusBtn.setDisable(false);}
+                                    if(lck.equals("1")){
+                                        newCusBtn.setDisable(true);
+                                        if(stime != null){
+                                            if(stime.equals(local_time)){
+                                                newCusBtn.setDisable(false);
+                                                stmt.executeUpdate("update services set locked = '0', unlock_time = null where s_no = '"+sno+"'");
+                                            }
+                                        }
+                                    }
+                                    else{
+                                        newCusBtn.setDisable(false);
+                                    }
                                 }
                                 else if(sno.equals(serviceTag)){
-                                    if(lck.equals("1")){servicesBtn.setDisable(true);}else{servicesBtn.setDisable(false);}
+                                    if(lck.equals("1")){
+                                        servicesBtn.setDisable(true);
+                                        if(stime != null){
+                                            if(stime.equals(local_time)){
+                                                servicesBtn.setDisable(false);
+                                                stmt.executeUpdate("update services set locked = '0', unlock_time = null where s_no = '"+sno+"'");
+                                            }
+                                        }
+                                    }
+                                    else{
+                                        servicesBtn.setDisable(false);
+                                    }
                                 }
                                 else if(sno.equals(othersTag)){
-                                    if(lck.equals("1")){otherBtn.setDisable(true);}else{otherBtn.setDisable(false);}
+                                    if(lck.equals("1")){
+                                        otherBtn.setDisable(true);
+                                        if(stime != null){
+                                            if(stime.equals(local_time)){
+                                                otherBtn.setDisable(false);
+                                                stmt.executeUpdate("update services set locked = '0', unlock_time = null where s_no = '"+sno+"'");
+                                            }
+                                        }
+                                    }
+                                    else{
+                                        otherBtn.setDisable(false);
+                                    }
                                 }
                             }
-                        }catch(Exception ex){ex.printStackTrace();}
+                            
+                        }catch(SQLException ex){ex.printStackTrace();}
                     });
                         if(LocalTime.now().isAfter(LocalTime.of(16, 15)) || LocalTime.now().isBefore(LocalTime.of(07, 59))){
                                 //doFadeIn(cardsStackPane, closedNode);
