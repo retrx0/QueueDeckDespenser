@@ -1,19 +1,10 @@
 
-.button {
+.button, .button:hover,.button:focus {
     -fx-font-weight: bold;
     -fx-font-size: 24px;
     -fx-background-color: #FFF;
     -fx-text-fill: #253365;
-}
-.button:hover{
-    -fx-font-weight: bold;
-    -fx-font-size: 24px;
-    -fx-background-color: #D0D9FA;
-}
-.button:focus{
-    -fx-font-weight: bold;
-    -fx-font-size: 24px; 
-}
-.button:active{
-    -fx-font-size: 24px;
+    -fx-background-radius: 5px;
+    -fx-padding: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 20,0.4,0,0);
 }
