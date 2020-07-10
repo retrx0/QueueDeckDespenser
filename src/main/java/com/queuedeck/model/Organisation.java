@@ -5,17 +5,10 @@
  */
 package com.queuedeck.model;
 
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-
 /**
  *
  * @author ABDULRAHMAN ILLO
  */
-public class FirstPageView extends AnchorPane{
-    
-    String name;
-    ImageView logo;
-    
+public class Organisation {
     
 }

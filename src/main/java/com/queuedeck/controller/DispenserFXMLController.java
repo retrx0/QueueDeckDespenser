@@ -34,10 +34,12 @@ import com.queuedeck.pool.BasicConnectionPool;
 import com.queuedeck.transitions.FadeInLeftTransition;
 import com.queuedeck.transitions.FadeOutRightTransition;
 import com.queuedeck.model.Ticket;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 
 public class DispenserFXMLController implements Initializable {
 
-    //<editor-fold defaultstate="collapsed" desc="Static Global variables">
+    //<editor-fold defaultstate="collapsed" desc="Global variables">
     String url = "jdbc:mysql://104.155.33.7:3306/ticketing";
     String username = "root";
     String password = "rotflmao0000";
@@ -196,6 +198,7 @@ public class DispenserFXMLController implements Initializable {
     @FXML private AnchorPane servicesNode;
     @FXML private Button servicesBackBtn;
     @FXML private AnchorPane otherNode;
+    @FXML private AnchorPane container;
     @FXML private Button otherBackBtn;
     @FXML public AnchorPane homePane;
     @FXML private Label ticketNumberLabel;
@@ -318,8 +321,7 @@ public class DispenserFXMLController implements Initializable {
         Connection con=pool.getConnection();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-                PreparedStatement get_tags = con.prepareStatement("select s_no, service from services");
-                ResultSet gt = get_tags.executeQuery();
+                ResultSet gt = con.prepareStatement("select s_no, service from services").executeQuery();
                 while(gt.next()){
                     String services = gt.getString("service");
                     switch(services){
@@ -340,11 +342,15 @@ public class DispenserFXMLController implements Initializable {
                 } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(DispenserFXMLController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        
+        Platform.runLater(() -> {
+            Window window = container.getScene().getWindow();
         Task task = new Task() {
             @Override
                 protected Object call() throws Exception {
                 while(true){
-                    Platform.runLater(() -> {
+                    if(!window.isShowing()) break;
                         try{
                             PreparedStatement ps = con.prepareStatement("select locked, s_no, unlock_time from services");
                             ResultSet rst =ps.executeQuery();
@@ -413,7 +419,7 @@ public class DispenserFXMLController implements Initializable {
                             }
                             
                         }catch(SQLException ex){ex.printStackTrace();}
-                    });
+                    
                         if(LocalTime.now().isAfter(LocalTime.of(16, 15)) || LocalTime.now().isBefore(LocalTime.of(07, 59))){
                                 //doFadeIn(cardsStackPane, closedNode);
                         }
@@ -424,9 +430,11 @@ public class DispenserFXMLController implements Initializable {
                         }
                 Thread.sleep(2000);
                 }
+                return null;
             }
         };
         new Thread(task).start();
+    });
         
     }
 }
