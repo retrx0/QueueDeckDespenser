@@ -5,6 +5,7 @@
  */
 package com.queuedeck.model;
 
+import com.queuedeck.controller.DispenserFXMLController;
 import com.queuedeck.pool.BasicConnectionPool;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -27,8 +28,40 @@ public class Service {
     List<Service> services = new ArrayList<>();
 
     public Service() {
+        
     }
 
+    public Service(String serviceNo, String serviceName, Boolean locked, String lockedByStaff, String unlockTime) {
+        this.serviceNo = serviceNo;
+        this.serviceName = serviceName;
+        this.locked = locked;
+        this.lockedByStaff = lockedByStaff;
+        this.unlockTime = unlockTime;
+    }
+
+    public List<Service> listServices(){
+        List<Service> l = new ArrayList<>();
+        try {
+            Connection con = DispenserFXMLController.pool.getConnection();
+            ResultSet rs = con.prepareStatement("select s_no, service, staff_no, locked, unlock_time from services").executeQuery();
+            while (rs.next()) {
+                Service s = new Service(rs.getString("s_no"), rs.getString("service"), rs.getBoolean("locked"), rs.getString("staff_no"), rs.getString("unlock_time"));
+                l.add(s);
+            }
+            DispenserFXMLController.pool.releaseConnection(con);
+        } catch (SQLException s) {}
+        
+        return l;
+    }
+    
+    public void unlockService(String sno){
+        try {
+            Connection con = DispenserFXMLController.pool.getConnection();
+            con.prepareStatement("update services set locked = '0', unlock_time = null where s_no = '"+sno+"'").executeUpdate();
+            DispenserFXMLController.pool.releaseConnection(con);
+        } catch (SQLException s) {}
+    }
+    
     public String getServiceName() {
         return serviceName;
     }

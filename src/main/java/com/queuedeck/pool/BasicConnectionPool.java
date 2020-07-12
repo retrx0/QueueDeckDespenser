@@ -22,9 +22,9 @@ public class BasicConnectionPool implements ConnectionPool{
     private String url;
     private String user;
     private String password;
-    private List<Connection> connectionPool;
+    private static List<Connection> connectionPool;
     private List<Connection> usedConnections = new ArrayList<>();
-    private static int INITIAL_POOL_SIZE = 20;
+    private static int INITIAL_POOL_SIZE = 10;
      
     public static BasicConnectionPool create(String url, String user,String password) {
         List<Connection> pool = new ArrayList<>(INITIAL_POOL_SIZE);

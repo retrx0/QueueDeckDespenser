@@ -5,6 +5,7 @@
  */
 package com.queuedeck.model;
 
+import com.queuedeck.controller.DispenserFXMLController;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 
@@ -15,6 +16,9 @@ import javafx.scene.control.Button;
 public class PageButton extends Button{
 
     String name;
+
+    public PageButton() {
+    }
     
     public PageButton(String name) {
         this.name = name;
@@ -25,12 +29,18 @@ public class PageButton extends Button{
         
         this.setAlignment(Pos.CENTER);
         this.setText(name);
-        this.setPrefHeight(200);
-        this.setPrefWidth(200);
-        
-        this.setOnAction((t) -> {
-        });
-        
+        this.setPrefHeight(150);
+        this.setPrefWidth(400);
+        this.setMaxSize(Integer.MAX_VALUE, 150);
+        this.getStylesheets().clear();
+        this.getStylesheets().add("/styles/Style-Default.css");
+        this.getStyleClass().clear();
+        this.getStyleClass().add("button");
+
+    }
+
+    public String getName() {
+        return name;
     }
     
 }

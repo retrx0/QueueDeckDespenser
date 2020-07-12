@@ -5,6 +5,15 @@
  */
 package com.queuedeck.model;
 
+import java.util.ArrayList;
+import java.util.List;
+import com.queuedeck.controller.DispenserFXMLController;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author ABDULRAHMAN ILLO
@@ -12,11 +21,11 @@ package com.queuedeck.model;
 public class QueueServices {
     
     private String q_no;
-    private String service;
+    private String queueServiceName;
 
     public QueueServices(String q_no, String service) {
         this.q_no = q_no;
-        this.service = service;
+        this.queueServiceName = service;
     }
 
     public QueueServices() {
@@ -30,14 +39,36 @@ public class QueueServices {
         this.q_no = q_no;
     }
 
-    public String getService() {
-        return service;
+    public String getQueueServiceName() {
+        return queueServiceName;
     }
 
-    public void setService(String service) {
-        this.service = service;
+    public void setQueueServiceName(String queueServiceName) {
+        this.queueServiceName = queueServiceName;
     }
     
-    
+    public List<QueueServices> listQueueServices(String s_no){
+        List<QueueServices> l =new ArrayList<>();
+        try {
+            Connection con = DispenserFXMLController.pool.getConnection();
+            ResultSet rs = con.prepareStatement("select q_no,service from queue_services").executeQuery();
+            int i = 0;
+            while(rs.next()){
+                if(s_no.equals(rs.getString("q_no"))){
+                    l.add(i, new QueueServices(rs.getString("q_no"), rs.getString("service")));
+                    i++;
+                }
+            }
+            DispenserFXMLController.pool.releaseConnection(con);
+        } catch (SQLException ex) {
+            Logger.getLogger(QueueServices.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return l;
+    }
+
+    @Override
+    public String toString() {
+        return "QueueServices{" + "q_no=" + q_no + ", service=" + queueServiceName + '}';
+    }
     
 }
