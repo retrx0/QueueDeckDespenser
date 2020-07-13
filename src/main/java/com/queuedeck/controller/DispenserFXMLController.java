@@ -410,12 +410,10 @@ public class DispenserFXMLController implements Initializable {
                         }
                         List<Service> serviceList = s.listServices();
                         LocalTime localTime = LocalTime.parse(String.valueOf(LocalTime.now()).substring(0, 2) + ":" + String.valueOf(LocalTime.now()).substring(3, 5) + ":" + "00");
-                        System.out.println(localTime);
                         for (int i = 0; i < serviceList.size(); i++) {
                             if (serviceList.get(i).getLocked()) {
                                 homePage.getHomePageButtonList().get(i).setDisable(true);
                                 LocalTime unlockT = LocalTime.parse(serviceList.get(i).getUnlockTime());
-                                System.out.println(unlockT);
                                 if (unlockT.equals(localTime)) {
                                     homePage.getHomePageButtonList().get(i).setDisable(false);
                                     s.unlockService(serviceList.get(i).getServiceNo());
