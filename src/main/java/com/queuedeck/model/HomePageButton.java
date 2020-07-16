@@ -5,6 +5,7 @@
  */
 package com.queuedeck.model;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -19,7 +20,7 @@ import javafx.util.Duration;
  *
  * @author ABDULRAHMAN ILLO
  */
-public class HomePageButton extends Button{
+public class HomePageButton extends JFXButton{
     
     String name;
     StackPane stackPane;
@@ -49,7 +50,6 @@ public class HomePageButton extends Button{
         this.getStylesheets().add("/styles/Style-Default.css");
         this.getStyleClass().clear();
         this.getStyleClass().add("button");
-        
         this.setOnAction((t) -> {
             PageView pv = new PageView(this.service.getServiceNo());
             pv.setCardStack(stackPane);

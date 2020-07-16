@@ -5,6 +5,7 @@
  */
 package com.queuedeck.model;
 
+import com.jfoenix.controls.JFXButton;
 import com.queuedeck.controller.DispenserFXMLController;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -13,7 +14,7 @@ import javafx.scene.control.Button;
  *
  * @author ABDULRAHMAN ILLO
  */
-public class PageButton extends Button{
+public class PageButton extends JFXButton{
 
     String name;
 

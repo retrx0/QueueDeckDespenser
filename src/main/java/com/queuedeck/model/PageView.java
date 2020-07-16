@@ -5,6 +5,7 @@
  */
 package com.queuedeck.model;
 
+import com.jfoenix.controls.JFXButton;
 import com.queuedeck.controller.DispenserFXMLController;
 import static com.queuedeck.controller.DispenserFXMLController.WEB_EASE;
 import static com.queuedeck.controller.DispenserFXMLController.pool;
@@ -45,7 +46,7 @@ public class PageView extends AnchorPane {
 
     List<QueueServices> queServicesList = new ArrayList<>();
     List<Service> servList = new ArrayList<>();
-    Button backBtn = new Button("Back");
+    JFXButton backBtn = new JFXButton("Back");
     
     VBox queueServicesVB;
     StackPane cardStack;
