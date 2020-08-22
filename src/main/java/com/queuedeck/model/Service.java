@@ -6,7 +6,6 @@
 package com.queuedeck.model;
 
 import com.queuedeck.controller.DispenserFXMLController;
-import com.queuedeck.pool.BasicConnectionPool;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;

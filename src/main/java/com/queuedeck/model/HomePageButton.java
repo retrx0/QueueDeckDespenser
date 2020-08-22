@@ -12,7 +12,6 @@ import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 
@@ -88,14 +87,14 @@ public class HomePageButton extends JFXButton{
         timeline.play();
     }
     void doSlideInFromLeft(StackPane stackPane, Node paneToAdd) {
-        Node paneToRemove = stackPane.getChildren().get(0);
+        Node paneToremove = stackPane.getChildren().get(0);
         paneToAdd.translateXProperty().set(-1 * stackPane.getWidth());
         stackPane.getChildren().add(paneToAdd);
         KeyValue kv = new KeyValue(paneToAdd.translateXProperty(), 0, Interpolator.SPLINE(0.25, 0.1, 0.25, 1));
         KeyFrame kf = new KeyFrame(Duration.millis(250), kv);
         Timeline timeline = new Timeline(kf);
         timeline.setOnFinished(evt -> {
-            stackPane.getChildren().remove(paneToRemove);
+            stackPane.getChildren().remove(paneToremove);
         });
         timeline.play();
     }
