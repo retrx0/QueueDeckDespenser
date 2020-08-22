@@ -46,6 +46,7 @@ public class HomePageButton extends JFXButton{
         this.setPrefHeight(150);
         this.setPrefWidth(300);
         this.setMaxSize(Integer.MAX_VALUE, 150);
+        this.setFocusTraversable(false);
         this.getStylesheets().clear();
         this.getStylesheets().add("/styles/Style-Default.css");
         this.getStyleClass().clear();

@@ -1,8 +1,6 @@
 package com.queuedeck.controller;
 
 import com.queuedeck.model.HomePageView;
-import com.queuedeck.model.PageButton;
-import com.queuedeck.model.PageView;
 import com.queuedeck.model.Service;
 import java.net.URL;
 import java.sql.Connection;
@@ -12,11 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Deque;
-import java.util.LinkedList;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
@@ -40,20 +34,19 @@ import com.queuedeck.transitions.FadeOutRightTransition;
 import com.queuedeck.model.Ticket;
 import java.util.List;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
 import javafx.stage.Window;
 
 public class DispenserFXMLController implements Initializable {
 
     //<editor-fold defaultstate="collapsed" desc="Global variables">
-    static final String url = "jdbc:mysql://104.155.33.7:3306/ticketing";
-    static final String username = "root";
-    static final String password = "rotflmao0000";
+    static final String Url = "jdbc:mysql://104.155.33.7:3306/ticketing";
+    static final String Username = "root";
+    static final String Password = "rotflmao0000";
     int ticketCounter = 1;
     String t1;
     int t2;
     String t3;
-    public static BasicConnectionPool pool = BasicConnectionPool.create(url, username, password);
+    public static BasicConnectionPool pool = BasicConnectionPool.create(Url, Username, Password);
     public String currentCusTag;
     public String newCusTag;
     public String serviceTag;

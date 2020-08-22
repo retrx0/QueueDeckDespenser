@@ -16,8 +16,16 @@ public class MainApp extends Application {
         
         Scene scene = new Scene(root);
         scene.getStylesheets().add("/styles/Style-Default.css");
-        //
-        stage.getIcons().add(new Image(this.getClass().getResource("/img/logo.ico.png").toString()));
+        
+        Image icon1 = new Image(this.getClass().getResource("/img/icon/icon1.png").toString());
+        Image icon2 = new Image(this.getClass().getResource("/img/icon/icon2.png").toString());
+        Image icon3 = new Image(this.getClass().getResource("/img/icon/icon3.png").toString());
+        Image icon4 = new Image(this.getClass().getResource("/img/icon/icon4.png").toString());
+        Image icon5 = new Image(this.getClass().getResource("/img/icon/icon5.png").toString());
+        Image icon6 = new Image(this.getClass().getResource("/img/icon/icon6.png").toString());
+        Image icon7 = new Image(this.getClass().getResource("/img/icon/icon7.png").toString());
+        
+        stage.getIcons().addAll(icon1,icon2,icon3,icon4,icon5,icon6,icon7);
         
         stage.setTitle("Queue Deck Dispenser App");
         stage.setScene(scene);
