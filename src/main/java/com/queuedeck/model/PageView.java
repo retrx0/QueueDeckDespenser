@@ -6,10 +6,8 @@
 package com.queuedeck.model;
 
 import com.jfoenix.controls.JFXButton;
-import com.queuedeck.controller.DispenserFXMLController;
 import static com.queuedeck.controller.DispenserFXMLController.WEB_EASE;
 import static com.queuedeck.controller.DispenserFXMLController.pool;
-import com.queuedeck.pool.BasicConnectionPool;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,13 +24,8 @@ import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
@@ -168,7 +161,7 @@ public class PageView extends AnchorPane {
         void doFadeIn(StackPane stackPane, Node paneToAdd) {
         Node paneToRemove = stackPane.getChildren().get(0);
         stackPane.getChildren().add(paneToAdd);
-         FadeTransition ft = new FadeTransition(Duration.millis(300));
+         FadeTransition ft = new FadeTransition(Duration.millis(200));
         ft.setOnFinished(evt -> {
             stackPane.getChildren().remove(paneToRemove);
         });

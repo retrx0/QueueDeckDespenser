@@ -131,7 +131,7 @@ public class DispenserFXMLController implements Initializable {
                         if (LocalTime.now().isAfter(LocalTime.of(16, 15)) || LocalTime.now().isBefore(LocalTime.of(07, 59))) {
                             if(!showedClosed){
                                 Platform.runLater(() -> {
-                                    doFadeIn(cardsStackPane, cv);
+                                    //doFadeIn(cardsStackPane, cv);
                                 });
                                 showedClosed = true;
                             }

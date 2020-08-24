@@ -79,7 +79,7 @@ public class HomePageButton extends JFXButton{
         paneToAdd.translateXProperty().set(stackPane.getWidth());
         stackPane.getChildren().add(paneToAdd);
         KeyValue kv= new KeyValue(paneToAdd.translateXProperty(), 0, Interpolator.SPLINE(0.25, 0.1, 0.25, 1));
-        KeyFrame  kf= new KeyFrame(Duration.millis(250), kv);
+        KeyFrame  kf= new KeyFrame(Duration.millis(150), kv);
         Timeline timeline = new Timeline(kf);
         timeline.setOnFinished(evt -> {
             stackPane.getChildren().remove(paneToRemove);
@@ -91,7 +91,7 @@ public class HomePageButton extends JFXButton{
         paneToAdd.translateXProperty().set(-1 * stackPane.getWidth());
         stackPane.getChildren().add(paneToAdd);
         KeyValue kv = new KeyValue(paneToAdd.translateXProperty(), 0, Interpolator.SPLINE(0.25, 0.1, 0.25, 1));
-        KeyFrame kf = new KeyFrame(Duration.millis(250), kv);
+        KeyFrame kf = new KeyFrame(Duration.millis(150), kv);
         Timeline timeline = new Timeline(kf);
         timeline.setOnFinished(evt -> {
             stackPane.getChildren().remove(paneToremove);
