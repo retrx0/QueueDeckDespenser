@@ -3,3 +3,13 @@ Queue Deck - Despenser Application </h1>
 <br>
 <br>
 Queing management software used mostly in banks, hospitals and schools.
+
+### Platform
+* [Javafx](https://openjfx.io/)
+
+### Libraries
+* [JFoenix](https://github.com/jfoenixadmin/JFoenix) 
+
+### Useful Links
+* [Fxects.com](https://fxects.000webhostapp.com) - Created by me :)
+* [material.io](https://material.io)
