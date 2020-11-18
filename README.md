@@ -2,7 +2,7 @@
 Queue Deck - Despenser Application </h1>
 <br>
 <br>
-Queing management software used mostly in banks, hospitals and schools.
+Queuing management software used mostly in banks, hospitals and schools.
 
 ### Platform
 * [Javafx](https://openjfx.io/)
